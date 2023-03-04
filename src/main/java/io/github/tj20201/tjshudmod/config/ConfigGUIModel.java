@@ -9,8 +9,8 @@ import io.wispforest.owo.config.annotation.RangeConstraint;
 public class ConfigGUIModel {
     public boolean showRenderedPlayersCount = true;
     @RangeConstraint(min = 1, max = ConfigGUIData.amountOfShowValues) public int orderRenderedPlayersCount = 3;
-    public boolean showRenderedContainersCount = true;
-    @RangeConstraint(min = 1, max = ConfigGUIData.amountOfShowValues) public int orderRenderedContainersCount = 4;
+    public boolean showLightLevel = true;
+    @RangeConstraint(min = 1, max = ConfigGUIData.amountOfShowValues) public int orderLightLevel = 4;
     public boolean showCoordinates = true;
     @RangeConstraint(min = 1, max = ConfigGUIData.amountOfShowValues) public int orderCoordinates = 1;
     public boolean showWorldTimeAndDay = true;

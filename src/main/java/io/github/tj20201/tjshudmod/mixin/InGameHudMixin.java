@@ -8,6 +8,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,8 +27,6 @@ public abstract class InGameHudMixin {
 
     @Shadow private int scaledWidth;
 
-    @Shadow private int scaledHeight;
-
     @Inject(at=@At("TAIL"), method="render")
     public void renderElements(MatrixStack matrices, float tickDelta, CallbackInfo ci) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         TextRenderer tr = this.getTextRenderer();
@@ -45,10 +44,29 @@ public abstract class InGameHudMixin {
         }
         int mult = 0;
         for (Object[] element : elements) {
-            mult += 1;
             if ((Boolean) element[1]) {
+                mult += 1;
                 String value = "0";
-                tr.draw(matrices, Text.translatable(("text.config.tjshudconfig.option."+element[0]).replaceFirst("Show", "").replace("Count", "")+": "+value), scaledWidth-160, 15*(mult+1)-15, 0xFFFFFF);
+                if (element[0] == "showRenderedPlayersCount") {
+                    assert client.world != null;
+                    value = String.valueOf(client.world.getPlayers().size()-1);
+                }
+                if (element[0] == "showLightLevel") {
+                    assert client.player != null && client.world != null;
+                    value = String.valueOf(client.world.getLightLevel(client.player.getBlockPos()));
+                }
+                if (element[0] == "showCoordinates") {
+                    assert client.player != null;
+                    BlockPos pos = client.player.getBlockPos();
+                    value = pos.getX()+", "+pos.getY()+", "+pos.getZ();
+                }
+                if (element[0] == "showWorldTimeAndDay") {
+                    // TODO: World Time in HH:MM format
+                    assert client.world != null;
+                    long day = client.world.getTimeOfDay()/24000;
+                    value = "Day "+day;
+                }
+                tr.draw(matrices, "§e"+Text.translatable("text.config.tjshudconfig.option."+element[0]).getString().replace("Show", "").replace(" Count", "")+": §6"+value, scaledWidth-160, 15*(mult+1)-25, 0xFFFFFF);
             }
         }
     }
