@@ -1,0 +1,17 @@
+{
+  "key.tjshudmod.opengui": "Config Open Key",
+
+  "category.tjshudmod.main": "TJ's HUD Mod",
+
+  "titles.tjshudmod.config": "TJHUDM Config",
+
+  "text.config.tjshudconfig.option.showRenderedPlayersCount": "Show Rendered Players Count",
+  "text.config.tjshudconfig.option.showRenderedContainersCount": "Show Rendered Containers Count",
+  "text.config.tjshudconfig.option.showCoordinates": "Show Coordinates",
+  "text.config.tjshudconfig.option.showWorldTimeAndDay": "Show World Time and Day",
+
+  "text.config.tjshudconfig.option.orderRenderedPlayersCount": "Ordered Position of Rendered Players Count",
+  "text.config.tjshudconfig.option.orderRenderedContainersCount": "Ordered Position of Rendered Containers Count",
+  "text.config.tjshudconfig.option.orderCoordinates": "Ordered Position of Coordinates",
+  "text.config.tjshudconfig.option.orderWorldTimeAndDay": "Ordered Position of World Time and Day"
+}

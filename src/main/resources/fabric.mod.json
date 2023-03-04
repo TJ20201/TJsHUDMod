@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "tjshudmod",
+  "version": "${version}",
+  "name": "TJsHUDMod",
+  "description": "A HUD mod for FabricMC.",
+  "authors": [
+    "TJ20201"
+  ],
+  "contact": {
+    "website": "https://github.com/TJ20201/TJsHUDMod",
+    "repo": "https://github.com/TJ20201/TJsHUDMod",
+    "sources": "https://github.com/TJ20201/TJsHUDMod"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "io.github.tj20201.tjshudmod.TJsHUDModClient"
+    ],
+    "main": [
+      "io.github.tj20201.tjshudmod.TJsHUDMod"
+    ]
+  },
+  "mixins": [
+    "TJsHUDMod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric": "*",
+    "fabric-key-binding-api-v1": "*",
+    "minecraft": ">=1.19.3"
+  },
+  "recommends": {
+    "modmenu": ">=5.0.2"
+  },
+  "custom": {
+    "modmenu": {
+
+    }
+}
+}
